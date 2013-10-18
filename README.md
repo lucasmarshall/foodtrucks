@@ -4,11 +4,13 @@ This simple application uses the [SODA 2.0 API](http://dev.socrata.com/consumers
 
 My experience with this technology stack
 ----------------------------------------
+This application was written as a coding challenge. If you aren't evaluating this coding challenge, feel free to skip to the [Demo](#demo) section below.
+
 In the coding challenge instructions, it says to specify how familiar I am with the stack I chose. I describe a bit of the logic behind my choices in the [Technologies Used](#technologies-used) section below, but here's a concise description of my personal experience:
 
 * It's been a few years since I've done any serious Python web app coding, so I'm a bit rusty.
 * This is my first time using Flask.
-    * YEARS ago I used Zope, CherryPy, and Django as my frameworks of choice for Python web apps.
+    * YEARS ago I used [Zope](http://www.zope.org), [CherryPy](http://www.cherrypy.org/), and [Django](https://www.djangoproject.com/) as my frameworks of choice for Python web apps.
 * This is definitely not my first time using Redis - I've used it extensively with PHP code - but
   it is the first time using it in Python code.
 * I'm pretty familiar with backbone.js due to its use at StumbleUpon, but I was not a frontend
@@ -24,15 +26,15 @@ A running instance of the application can be found at: <http://fathomless-platea
 
 Technologies Used
 -----------------
-The backend is written in Python, using the Flask microframework (http://flask.pocoo.org), which I chose to use due to the fact that it was adequate for a simple app such as this, and the fact that I'd never used it before... it seemed interesting.
+The backend is written in Python, using the [Flask](http://flask.pocoo.org) microframework , which I chose to use due to the fact that it was adequate for a simple app such as this, and the fact that I'd never used it before... it seemed interesting.
 
-The frontend is JavaScript, using [backbone.js](http://backbonejs.org) for views and models, the [Google Maps API](https://developers.google.com/maps/) for the map controls and geocoding, and one instance of an [underscore.js](http://underscorejs.org) template , since I thought that including something like handlebars or mustache would be overkill for such a simple use case when backbone has a dependency on underscore.
+The frontend is JavaScript, using backbone.js for views and models, the [Google Maps API](https://developers.google.com/maps/) for the map controls and geocoding, and one instance of an [underscore.js](http://underscorejs.org) template , since I thought that including something like handlebars or mustache would be overkill for such a simple use case when backbone has a dependency on underscore.
 
 I also wrote a generic SODA 2.0 Query API class that could be broken out and used in other projects that could use data sources that implement SODA 2.0 APIs. This class interface is conceptually similar to Django's ResultSet class. I followed that pattern due to the fact that most Python developers are at least cursorily familiar with it and that the SODA API's SoQL is very similar to SQL, which the ResultSet is meant to provide an abstraction to.
 
 The SODA class does some very simple query-based caching of results. It's currently hard-coded to use a [Redis](http://redis.io)-based cache.
 
-The app is immediately deployable to [heroku](https://www.heroku.com/). I chose heroku because it's adequate for this application, and I've never used it before and wanted to try it out. It shouldn't be difficult to deploy in another environment like EC2.
+The app is immediately deployable to [Heroku](https://www.heroku.com/). I chose heroku because it's adequate for this application, and I've never used it before and wanted to try it out. It shouldn't be difficult to deploy in another environment like EC2.
 
 Optimizations and Improvements
 ------------------------------
