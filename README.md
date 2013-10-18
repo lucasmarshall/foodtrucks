@@ -34,7 +34,7 @@ I also wrote a generic SODA 2.0 Query API class that could be broken out and use
 
 The SODA class does some very simple query-based caching of results. It's currently hard-coded to use a [Redis](http://redis.io)-based cache.
 
-The app is immediately deployable to [Heroku](https://www.heroku.com/). I chose heroku because it's adequate for this application, and I've never used it before and wanted to try it out. It shouldn't be difficult to deploy in another environment like EC2.
+The app is immediately deployable to [Heroku](https://www.heroku.com/). I chose Heroku because it's adequate for this application, and I've never used it before and wanted to try it out. It shouldn't be difficult to deploy in another environment like EC2.
 
 Optimizations and Improvements
 ------------------------------
