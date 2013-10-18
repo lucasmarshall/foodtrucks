@@ -10,7 +10,7 @@ In the coding challenge instructions, it says to specify how familiar I am with 
 
 * It's been a few years since I've done any serious Python web app coding, so I'm a bit rusty.
 * This is my first time using Flask.
-    * YEARS ago I used [Zope](http://www.zope.org), [CherryPy](http://www.cherrypy.org/), and [Django](https://www.djangoproject.com/) as my frameworks of choice for Python web apps.
+    * _Years_ ago I used [Zope](http://www.zope.org), [CherryPy](http://www.cherrypy.org/), and [Django](https://www.djangoproject.com/) as my frameworks of choice for Python web apps.
 * This is definitely not my first time using Redis - I've used it extensively with PHP code - but
   it is the first time using it in Python code.
 * I'm pretty familiar with backbone.js due to its use at StumbleUpon, but I was not a frontend
