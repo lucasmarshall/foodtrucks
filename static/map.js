@@ -102,12 +102,36 @@ $(function(){
 
             // @todo move this to a templating system to make localization easier
             this.search       = $('<div id="ui"><input type="text" id="search-field" placeholder="Enter Location"/><div id="details"/></div>');
-            this.map          = new google.maps.Map(this.el, mapOptions);
             this.geocoder     = new google.maps.Geocoder;
             this.views        = {};
-            this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.search[0]);
             this.searchfield  = $('#search-field', this.search);
             this.listenTo(this.model, "change", this.render);
+
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var lat = position.coords.latitude,
+                            lng = position.coords.longitude;
+                        mapOptions['center'] = new google.maps.LatLng(lat, lng);
+                        this.drawMap(mapOptions);
+                    }.bind(this),
+
+                    function() {
+                        this.drawMap(mapOptions);
+                    }
+                );
+            }
+            else
+            {
+                this.drawMap(mapOptions);
+            }
+        },
+
+        drawMap: function(mapOptions) {
+            this.map          = new google.maps.Map(this.el, mapOptions);
+            this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.search[0]);
+            this.addMarker(mapOptions.center);
 
             var idlelistener = google.maps.event.addListener(this.map, 'idle', function() {
                 this.drawTrucks();
