@@ -4,7 +4,7 @@ This simple application uses the [SODA 2.0 API](http://dev.socrata.com/consumers
 
 My experience with this technology stack
 ----------------------------------------
-In the coding challenge instructions, it says to specify how familiar I am with the stack I chose. I describe a bit of the logic behind my choices in the [Technologies Used](#technologies-used) section below, but here's a concised description of my personal experience:
+In the coding challenge instructions, it says to specify how familiar I am with the stack I chose. I describe a bit of the logic behind my choices in the [Technologies Used](#technologies-used) section below, but here's a concise description of my personal experience:
 
 * It's been a few years since I've done any serious Python web app coding, so I'm a bit rusty.
 * This is my first time using Flask.
