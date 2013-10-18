@@ -106,7 +106,6 @@ class SodaQuery(object):
 		raise SodaError("Can't fetch URL %s, got HTTP code %s" % (response.geturl(), reponse.getcode()))
 
 	def __do_request(self, query):
-		print self.__endpoint + '?' + urllib.urlencode(query)
 		try:
 			return urllib2.urlopen(self.__endpoint + '?' + urllib.urlencode(query))
 		except urllib2.URLError, e:
