@@ -1,4 +1,8 @@
-import urllib, urllib2, copy, json
+import urllib, urllib2, copy, json, os, urlparse
+from redis_cache import SimpleCache, cache_it
+
+redis_conf = urlparse.urlparse(os.getenv('REDISTOGO_URL', 'redis://redistogo:42a7d091c0e7fbe5608e71d37c0b90cd@beardfish.redistogo.com:10647/'))
+cache      = SimpleCache(limit=100, expire=60 * 60, hashkeys=True, host=redis_conf.hostname, port=redis_conf.port, password=redis_conf.password)
 
 class SodaQuery(object):
 	"""
@@ -81,6 +85,7 @@ class SodaQuery(object):
 		query = self.__build_query()
 		return self.__do_query(query)
 
+	@cache_it(cache=cache)
 	def __do_query(self, query):
 		response = self.__do_request(query)
 
