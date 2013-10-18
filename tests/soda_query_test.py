@@ -8,7 +8,7 @@ class TestSoda(unittest.TestCase):
         self.query = SodaQuery('http://data.sfgov.org/resource/rqzj-sfat.json')
 
     def test_where(self):
-        self.assertEquals({'$where': 'foo==bar AND NOT bar==baz'}, self.query.where(foo='bar', bar__not_eq='baz')._SodaQuery__build_query())
+        self.assertEquals({'$where': "foo = 'bar' AND NOT bar = 'baz'"}, self.query.where(foo='bar', bar__not_eq='baz')._SodaQuery__build_query())
 
     def test_select(self):
         self.assertEquals({'$select': 'title, description'}, self.query.select('title').select('description')._SodaQuery__build_query())
