@@ -66,16 +66,24 @@ class SodaQuery(object):
 		return obj
 
 	def order(self, order):
+		"""
+		Order the query by the field provided.
+
+		For an acending order, just provide the field: 'distance'
+		For decending order, precede the fieldname with a minus: '-distance'
+		"""
 		obj         = copy.deepcopy(self)
 		obj.__order = order
 		return obj
 
 	def limit(self, limit):
+		""" Limit the number of results to the number provided """
 		obj         = copy.deepcopy(self)
 		obj.__limit = limit
 		return obj
 
 	def offset(self, offset):
+		""" Only the results in the set from the offset onward """
 		obj          = copy.deepcopy(self)
 		obj.__offset = offset
 		return obj
