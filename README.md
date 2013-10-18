@@ -1,9 +1,9 @@
 SF Food Trucks
 ==============
-This simple application uses the [SODA 2.0 API](http://dev.socrata.com/consumers/getting-started) to query sfgov.org's table of food truck applications and show their locations on a Google map, along with details of what the food truck sells and the address of the food truck.
+This simple application uses the [SODA 2.0 API](http://dev.socrata.com/consumers/getting-started) to query [sfgov.org's table of mobile food facility permit applications](https://data.sfgov.org/Permitting/Mobile-Food-Facility-Permit/rqzj-sfat) and show their locations on a Google map, along with details of what the food truck sells and the address of the food truck.
 
-My experience with this technology stack
-----------------------------------------
+My Experience with the Technology Stack
+---------------------------------------
 This application was written as a coding challenge. If you aren't evaluating this coding challenge, feel free to skip to the [Demo](#demo) section below.
 
 In the coding challenge instructions, it says to specify how familiar I am with the stack I chose. I describe a bit of the logic behind my choices in the [Technologies Used](#technologies-used) section below, but here's a concise description of my personal experience:
@@ -36,8 +36,8 @@ The SODA class does some very simple query-based caching of results. It's curren
 
 The app is immediately deployable to [Heroku](https://www.heroku.com/). I chose Heroku because it's adequate for this application, and I've never used it before and wanted to try it out. It shouldn't be difficult to deploy in another environment like EC2.
 
-Optimizations and Improvements
-------------------------------
+Possible Future Optimizations and Improvements
+----------------------------------------------
 * Minifying and combining the JS files used.
 * Adding the functionality to give directions to the truck from the current location.
 * Make it more generic to support other data sources for food truck locations in other cities.
