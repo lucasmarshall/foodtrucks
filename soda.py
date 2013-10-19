@@ -32,7 +32,7 @@ class SodaQuery(object):
 		"""
 		Add a where clause to a query.
 
-	    Only supports ANDing the query parts for now.
+		Only supports ANDing the query parts for now.
 		Keyword arguments should be the field to include in the query, with an optional operator
 		If an operator is not specified, it defaults to __eq
 
