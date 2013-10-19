@@ -36,10 +36,13 @@ body {
 }
 
 #ui.expand {
-	height: 190px;
+	height: 340px;
 }
 #details {
 	padding: 0 10px;
-	height: 150px;
+	height: 300px;
 	overflow: auto;
+}
+.streetview {
+	cursor: pointer;
 }

@@ -26,19 +26,21 @@ $(function(){
     var FoodTrucks = new FoodTruckList;
 
     var FoodTruckView = Backbone.View.extend({
-        template: _.template('<h1><%=name%></h1><dl><dt>Address</dt><dd><%=address%></dd><dt>Food Types</dt><dd><%=type%></dd></dl>'),
+        template: _.template('<h1><%=name%></h1><dl><dt>Address</dt><dd><%=address%></dd><dt>Food Types</dt><dd><%=type%></dd><dt>Street View</dt><dd><img src="<%=streetviewurl%>" class="streetview"/></dd></dl>'),
 
         initialize: function(options) {
             this.map = options['map'];
             var lat = this.model.get('lat'),
-                lng = this.model.get('lng'),
-                truckposition = new google.maps.LatLng(lat, lng);
+                lng = this.model.get('lng');
+
+            this.position = new google.maps.LatLng(lat, lng);
 
             this.marker = new google.maps.Marker({
-                position: truckposition,
+                position: this.position,
                 icon: { url: '/static/food_truck.png' },
                 title: this.model.get('name')
             });
+
             google.maps.event.addListener(this.marker, 'click', this.displayInfo.bind(this));
             this.listenTo(this.model, "change", this.update);
         },
@@ -54,11 +56,18 @@ $(function(){
         },
 
         displayInfo: function() {
-            var details = $('#details'),
-                ui      = $('#ui');
+            var details      = $('#details'),
+                ui           = $('#ui'),
+                details_view = this.template(this.model.toJSON());
+
             ui.removeClass('expand');
-            details.empty()
-            details.append(this.template(this.model.toJSON()));
+            details.empty();
+            details.append(details_view);
+            $('.streetview').click(function(){
+                var streetview = this.map.getStreetView();
+                streetview.setPosition(this.position);
+                streetview.setVisible(true);
+            }.bind(this));
             ui.addClass('expand');
             this.setSelected();
         },

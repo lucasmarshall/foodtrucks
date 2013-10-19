@@ -45,7 +45,8 @@ def __doResponseMapping(item):
 		'type': item['fooditems'],
 		'lat': item['latitude'],
 		'lng': item['longitude'],
-		'address': item['address']
+		'address': item['address'],
+		'streetviewurl': 'http://maps.googleapis.com/maps/api/streetview?size=386x120&location=%s,%s&pitch=-8&sensor=true&key=%s' % (item['latitude'], item['longitude'], app.config['GOOGLE_API_KEY'])
 	}
 
 if __name__ == '__main__':
