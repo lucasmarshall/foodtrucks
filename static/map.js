@@ -133,6 +133,11 @@ $(function(){
             this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.search[0]);
             this.addMarker(mapOptions.center);
 
+            google.maps.event.addListener(this.map, 'click', function() {
+                this.deselectAllTrucks();
+                $('#ui').removeClass('expand');
+            }.bind(this));
+
             var idlelistener = google.maps.event.addListener(this.map, 'idle', function() {
                 this.drawTrucks();
             }.bind(this));
@@ -142,6 +147,8 @@ $(function(){
                 this.autocomplete = new google.maps.places.Autocomplete(this.searchfield[0], {bounds:this.map.getBounds()});
                 this.loadTrucks();
             }.bind(this));
+
+            this.trigger('init');
         },
 
         render: function() {
@@ -232,6 +239,11 @@ $(function(){
             });
         },
 
+        deselectAllTrucks: function() {
+            FoodTrucks.each(function(model){
+                model.set({'selected': false})
+            });
+        },
 
         handleSearch: function(e) {
             if (e.keyCode != 13)
@@ -272,5 +284,4 @@ $(function(){
 
     maplocation = new MapLocation;
     map         = new MapView({ model: maplocation });
-    map.render();
 });
