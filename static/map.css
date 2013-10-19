@@ -16,6 +16,11 @@ body {
 	height: 39px;
 	padding: 0 5px;
 }
+
+#search-field:focus {
+	outline: none;
+}
+
 #ui {
 	width: 460px;
 	margin-top: 10px;
