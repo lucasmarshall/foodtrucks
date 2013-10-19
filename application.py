@@ -5,11 +5,6 @@ from yaml import load, dump
 from contextlib import closing
 from soda import SodaQuery
 
-try:
-    from yaml import CLoader as Loader, CDumper as Dumper
-except ImportError:
-    from yaml import Loader, Dumper
-
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
 
